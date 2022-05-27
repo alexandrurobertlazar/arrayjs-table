@@ -1,6 +1,6 @@
-export class Table {
+class Table {
     constructor(arr) {
-        if (arr[0] && (arr[0].id === undefined || arr[0].data === undefined)) {
+        if (arr && arr[0] && (arr[0].id === undefined || arr[0].data === undefined)) {
             let normArray = []
             let i = 0;
             for (const data of arr) {
@@ -90,3 +90,5 @@ export class Table {
         }
     }
 }
+
+module.exports = Table;
