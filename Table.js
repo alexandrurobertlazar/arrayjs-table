@@ -59,7 +59,7 @@ class Table {
                 i++;
             }
         }
-        const lastId = this.select[this.select.length - 1].id;
+        const lastId = this.select?this.select[this.select.length - 1].id:-1;
         this.select.push({ id: lastId + 1, data: newRow });
     }
 
