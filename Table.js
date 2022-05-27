@@ -49,7 +49,7 @@ class Table {
         let newRow = {};
         let i = 0;
         for (let col of columns) {
-            if (this.select[0]) {
+            if (this.select && this.select[0]) {
                 if (this.select[0].data[col]) {
                     newRow[col] = data[i];
                     i++;
