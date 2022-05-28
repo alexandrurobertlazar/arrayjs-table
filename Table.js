@@ -12,7 +12,11 @@ class Table {
             }
             this.select = normArray;
         } else {
-            this.select = arr
+            if (arr) {
+                this.select = arr;
+            } else {
+                this.select = [];
+            }
         }
     }
 
