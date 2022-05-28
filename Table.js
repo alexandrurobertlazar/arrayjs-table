@@ -14,8 +14,6 @@ class Table {
         } else {
             if (arr) {
                 this.select = arr;
-            } else {
-                this.select = [];
             }
         }
     }
@@ -64,7 +62,7 @@ class Table {
             }
         }
         const lastId = this.select?this.select[this.select.length - 1].id:-1;
-        this.select.push({ id: lastId + 1, data: newRow });
+        this.select?this.select.push({ id: lastId + 1, data: newRow }):this.select = [{ id: lastId + 1, data: newRow }];
     }
 
     update(columns, data) {
