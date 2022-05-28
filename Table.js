@@ -61,7 +61,7 @@ class Table {
                 i++;
             }
         }
-        const lastId = this.select && this.select !== []?this.select[this.select.length - 1].id:-1;
+        const lastId = this.select && this.select.length !== 0?this.select[this.select.length - 1].id:-1;
         this.select?this.select.push({ id: lastId + 1, data: newRow }):this.select = [{ id: lastId + 1, data: newRow }];
     }
 
