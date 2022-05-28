@@ -44,6 +44,26 @@ You may also call multiple times on `.whereEquals` or `.whereNotEquals`, like so
 db.whereEquals(column1, value1).whereNotEquals(column2, value2)...
 ```
 
+Should you need to get the results of objects in objects (or, as I would call them, "nested columns"), you may do so like this (starting from version 1.0.18):
+
+```{js}
+db.whereEquals('column1.column2', 'whatever');
+```
+
+For example, this would work in an object like this:
+
+```{js}
+[
+    {
+        column1: {
+            column2: "whatever"
+        }
+    }
+]
+```
+
+Please note, updating or inserting data in nested columns is not yet supported, but hopefully it will be very soon.
+
 Of course, if, for any reason you need to get an item with a specific ID, by calling `.whereId()`
 
 You can now also get unique values (as of version 1.0.15), by calling the `.unique()` function on the table, like so:

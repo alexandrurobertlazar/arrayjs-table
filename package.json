@@ -1,6 +1,6 @@
 {
   "name": "arrayjs-table",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "This packages allows to easily manage arrays of objects, by creating a similar syntax to SQL.",
   "keywords": "database, table, array, object, JavaScript",
   "main": "Table.js",

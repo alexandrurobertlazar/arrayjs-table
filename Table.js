@@ -12,8 +12,10 @@ class Table {
             }
             this.select = normArray;
         } else {
-            if (arr) {
+            if (arr !== undefined) {
                 this.select = arr;
+            } else {
+                throw new Error('Error: An array must be passed to create the table. Try creating it using something like this: "new Table([]);"')
             }
         }
     }
@@ -29,22 +31,38 @@ class Table {
         return new Table(this.select.filter(obj => obj.id === id))
     }
 
+    static getDataFromNestedColumns(obj, columns) {
+        if (!obj || !columns) {
+            throw new Error("Please check again the arguments!");
+        }
+        const args = columns.split('.');
+        let objData = obj.data;
+        for (let arg of args) {
+            if (objData[arg]) {
+                objData = objData[arg];
+            } else {
+                return false;
+            }
+        }
+        return objData;
+    }
+
     whereEquals(column, value) {
         return new Table(this.select.filter(obj => {
-            if (obj.data[column]) {
-                return obj.data[column] == value
+            if (Table.getDataFromNestedColumns(obj, column)) {
+                return Table.getDataFromNestedColumns(obj, column) == value;
             }
-            return false
-        }))
+            return false;
+        }));
     }
 
     whereNotEquals(column, value) {
         return new Table(this.select.filter(obj => {
-            if (obj.data[column]) {
-                return obj.data[column] != value
+            if (Table.getDataFromNestedColumns(obj, column)) {
+                return Table.getDataFromNestedColumns(obj, column) != value;
             }
-            return false
-        }))
+            return false;
+        }));
     }
 
     insert(columns, data) {
