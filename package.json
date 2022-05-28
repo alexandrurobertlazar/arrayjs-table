@@ -1,9 +1,13 @@
 {
   "name": "arrayjs-table",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "This packages allows to easily manage arrays of objects, by creating a similar syntax to SQL.",
   "keywords": "database, table, array, object, JavaScript",
   "main": "Table.js",
   "author": "Alexandru Robert Lazar",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexandrurobertlazar/arrayjs-table.git"
+  }
 }
