@@ -91,6 +91,26 @@ class Table {
             if (isColFound) break;
         }
     }
+
+    unique() {
+        let uniqueItems = [];
+        if (this.select) {
+            for (const item of this.select) {
+                if (!uniqueItems.some(i => {
+                    let isUnique = true;
+                    for (let [index, data] of Object.entries(i.data)) {
+                        if (item.data[index] !== data) {
+                            isUnique = false;
+                        }
+                    }
+                    return isUnique;
+                })) {
+                    uniqueItems.push(item)
+                }
+            }
+        }        
+        return new Table(uniqueItems);
+    }
 }
 
 module.exports = Table;
